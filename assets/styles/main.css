@@ -1,5 +1,5 @@
 @import url("./_fonts.css");
-@import url("./_reset.css");
+@import url("_reset.css");
 @import url("./_vars.css");
 @import url("./global.css");
 body {
@@ -8,28 +8,32 @@ body {
 }
 
 .header {
-  padding: 10px 0;
+  padding-top: 20px;
   font-size: 2rem;
+  color: var(--white);
 }
 .header-action {
+  cursor: pointer;
+  outline: 1px solid var(--orange);
+}
+.header-action:not(.bottom-bar__contact-us) {
   width: 44px;
   height: 44px;
-  aspect-ratio: 1/1;
   border-radius: 50%;
-  cursor: pointer;
-}
-.header-action:not(.top-bar__logo) {
-  border: 2px solid var(--orange);
 }
 .header-action:focus {
-  outline: 4px solid red;
+  outline: 4px solid var(--orange);
 }
 .header__top-bar, .header__bottom-bar {
   display: flex;
-  padding: 10px;
+  padding: 10px 0;
+  align-items: center;
 }
-.header .top-bar > *:not(:last-child) {
-  margin-right: 24px;
+.header__top-bar > *:not(:last-child), .header__bottom-bar > *:not(:last-child) {
+  margin-right: 20px;
+}
+.header .top-bar__logo {
+  overflow: hidden;
 }
 .header .top-bar__logo-img {
   width: 100%;
@@ -40,24 +44,58 @@ body {
   display: flex;
 }
 .header .top-bar__navigation .navigation-list__item:not(:last-child) {
-  margin-right: 24px;
+  margin-right: 20px;
 }
 .header .top-bar__navigation .navigation-list__link {
   display: inline-block;
-  padding: 10.5px 18px;
-  color: var(--orange);
+  padding: 12px 18px;
   font-family: Reforma;
   letter-spacing: var(--reforma_46);
   text-transform: uppercase;
-  font-weight: 500;
 }
 .header .top-bar__profile {
   margin-left: auto;
+}
+.header .bottom-bar__contact-us {
+  font-size: 1.8rem;
+  position: relative;
+  text-align: center;
+  border-radius: 18px;
+  outline-color: var(--green);
+}
+.header .bottom-bar__contact-us-heading {
+  padding: 11.5px 18px;
+  display: block;
+}
+.header .bottom-bar__contact-us-list {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  transform: translateY(40%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms ease-out all;
+}
+.header .bottom-bar__contact-us-list.in-view {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.header .bottom-bar__contact-us-item {
+  padding: 11.5px 18px;
+  display: block;
+  cursor: pointer;
+  border-radius: 18px;
+  border: 1px solid var(--green);
+}
+.header .bottom-bar__contact-us-item:last-child {
+  margin-top: -1px;
 }
 .header .bottom-bar__actions {
   margin-left: auto;
   display: flex;
 }
 .header .bottom-bar__actions > *:not(:last-child) {
-  margin-right: 24px;
+  margin-right: 20px;
 }/*# sourceMappingURL=main.css.map */
