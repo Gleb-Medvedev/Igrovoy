@@ -1,0 +1,12 @@
+:root {
+    /* colors */
+    --red: #9F2B68;
+    --green: #287233;
+    --orange: #FF4F00;
+    --indigo: #00416A;
+    --dark: #1D1E33;
+    --white: #fff;
+
+    /* letter-spacing */
+    --reforma_46: .46rem;
+}

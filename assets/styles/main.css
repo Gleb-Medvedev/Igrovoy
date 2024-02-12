@@ -1,0 +1,63 @@
+@import url("./_fonts.css");
+@import url("./_reset.css");
+@import url("./_vars.css");
+@import url("./global.css");
+body {
+  min-height: 100vh;
+  background-color: var(--dark);
+}
+
+.header {
+  padding: 10px 0;
+  font-size: 2rem;
+}
+.header-action {
+  width: 44px;
+  height: 44px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.header-action:not(.top-bar__logo) {
+  border: 2px solid var(--orange);
+}
+.header-action:focus {
+  outline: 4px solid red;
+}
+.header__top-bar, .header__bottom-bar {
+  display: flex;
+  padding: 10px;
+}
+.header .top-bar > *:not(:last-child) {
+  margin-right: 24px;
+}
+.header .top-bar__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.header .top-bar__navigation .navigation-list {
+  display: flex;
+}
+.header .top-bar__navigation .navigation-list__item:not(:last-child) {
+  margin-right: 24px;
+}
+.header .top-bar__navigation .navigation-list__link {
+  display: inline-block;
+  padding: 10.5px 18px;
+  color: var(--orange);
+  font-family: Reforma;
+  letter-spacing: var(--reforma_46);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.header .top-bar__profile {
+  margin-left: auto;
+}
+.header .bottom-bar__actions {
+  margin-left: auto;
+  display: flex;
+}
+.header .bottom-bar__actions > *:not(:last-child) {
+  margin-right: 24px;
+}/*# sourceMappingURL=main.css.map */
