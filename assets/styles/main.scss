@@ -256,25 +256,37 @@ body {
     &-banner {
         &__content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3vw;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         &__headliner {
             overflow: hidden;
             border-radius: 16px;
             
-            & > img {
-                width: 100%;
+            & .swiper {
                 height: 100%;
-                -o-object-fit: cover;
-                   object-fit: cover;
+                
+                &-wrapper {
+                    height: 100%;
+
+                    & .swiper-slide {
+                        align-items: stretch;
+
+                        & > img {
+                            width: 100%;
+                            height: 100%;
+                            -o-object-fit: cover;
+                               object-fit: cover;
+                        }
+                    }
+                }
             }
         }
 
         &__grid {
             display: grid;
-            gap: 3vw;
+            gap: 20px;
             grid-template: repeat(2, 1fr) / repeat(2, 1fr);
 
             & > div {

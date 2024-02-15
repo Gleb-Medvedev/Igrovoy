@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/responsive.css">
     <title>Магазин "Игровой". Симферополь</title>
 </head>
 <body>
@@ -93,7 +95,24 @@
             <div class="container">
                 <div class="main-banner__content">
                     <div class="main-banner__headliner">
-                        <img src="../bg test/test.jpg" alt="">
+                        <!-- Slider main container -->
+                        <div class="swiper">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                            <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="../bg test/test.jpg" alt="">
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <img src="../bg test/test.jpg" alt="">
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <img src="../bg test/test.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="main-banner__grid">
                         <div><img src="../bg test/test.jpg" alt=""></div>
@@ -109,7 +128,7 @@
 
 
 
-
+    <script src="assets/js/swiper-bundle.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>

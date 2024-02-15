@@ -1,7 +1,8 @@
-// document.querySelectorAll('.header-action').forEach((item) => {
-//     item.addEventListener('click', () => {
-
-    
-
-//     })
-// })
+const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
+    autoplay: true,
+    rewind: true,
+    slidesPerView: 1,
+    spaceBetween: 20,
+});
