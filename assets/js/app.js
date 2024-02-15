@@ -1,8 +1,7 @@
-// document.querySelector('.menu-btn').addEventListener('click', () => {
-//     document.querySelector('.menu-btn').classList.toggle('opened');
+// document.querySelectorAll('.header-action').forEach((item) => {
+//     item.addEventListener('click', () => {
+
+    
+
+//     })
 // })
-
-document.querySelector('.bottom-bar__contact-us').addEventListener('click', () => {
-    document.querySelector('.bottom-bar__contact-us-list').classList.toggle('in-view');
-})
-

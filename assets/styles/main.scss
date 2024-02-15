@@ -8,17 +8,32 @@ body {
     background-color: var(--dark);
 }
 
-
-
-
 .header {
     padding-top: 20px;
     font-size: 2rem;
     color: var(--white);
-
+    
     &-action {
+        color: var(--white);
         cursor: pointer;
-        outline: 1px solid var(--orange);
+        transition: 250ms ease-out all;
+
+        &:not(.top-bar__logo) {
+            outline: 4px solid transparent;
+
+            &.active {
+                color: var(--green);
+            }
+        }
+
+
+        
+        & > svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: transparent;
+        }
 
         &:not(.bottom-bar__contact-us) {
             width: 44px;
@@ -27,7 +42,7 @@ body {
         }
 
         &:focus {
-            outline: 4px solid var(--orange);
+            outline: 4px solid currentColor;
         }
     }
 
@@ -61,6 +76,8 @@ body {
                 display: flex;
 
                 &__item {
+                    white-space: nowrap;
+                    
                     &:not(:last-child) {
                         margin-right: 20px;
                     }
@@ -78,6 +95,7 @@ body {
 
         &__profile {
             margin-left: auto;
+            padding: 5px;
         }
     }
 
@@ -87,7 +105,7 @@ body {
             position: relative;
             text-align: center;
             border-radius: 18px;
-            outline-color: var(--green);
+            color: currentColor;
 
             &-heading {
                 padding: 11.5px 18px;
@@ -127,10 +145,102 @@ body {
         &__actions {
             margin-left: auto;
             display: flex;
-
+    
             & > * {
+                padding: 6px;
+                
                 &:not(:last-child) {
                     margin-right: 20px;
+                }
+            }
+
+            & .search-bar {
+                
+                &-container {
+                    height: 100%;
+                    overflow: hidden;
+                }
+
+                &__movable-wrapper {
+                    height: 200%;
+                    transition: 250ms ease-out all;
+
+                    & > div {
+                        height: 50%;
+
+                        & > svg {
+                            width: 100%;
+                            height: 100%;
+                            stroke: currentColor;
+                            fill: transparent;
+                            margin: 0;
+                        }
+                    } 
+                }
+
+                &.active {
+                    & .search-bar-container {
+                        & > .search-bar__movable-wrapper {
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+            }
+
+            & .menu-btn {
+                border-radius: unset;
+        
+                &__row {
+                    height: 3px;
+                    background-color: currentColor;
+                    border-radius: 3px;
+                    transition: 250ms all ease-out;
+        
+                    &:not(:last-child) {
+                        margin-bottom: 11px;
+                    }
+
+                    &:nth-child(2) {
+                        position: relative;
+
+                        &::before {
+                            position: absolute;
+                            content: '';
+                            width: 100%;
+                            height: 100%;
+                            left: 0;
+                            top: 0;
+                            border-radius: 3px;
+                            background-color: currentColor;
+                            transition: 250ms ease-out all;
+                        }
+                    }
+        
+                    &:first-child,
+                    &:last-child {
+                        width: 50%;
+                    }
+        
+                    &:last-child {
+                        margin-left: auto;
+                    }
+                }
+
+                &.active {
+                    .menu-btn__row {
+                        &:first-child,
+                        &:last-child {
+                            width: 0;
+                        }
+
+                        &:nth-child(2) {
+                            transform: rotate(-45deg);
+
+                            &::before {
+                                transform: rotate(-90deg);
+                            }
+                        }
+                    }
                 }
             }
         }
