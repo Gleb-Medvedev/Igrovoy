@@ -53,6 +53,9 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.header .top-bar__navigation {
+  display: none;
+}
 .header .top-bar__navigation .navigation-list {
   display: flex;
 }
@@ -74,6 +77,7 @@ body {
   padding: 5px;
 }
 .header .bottom-bar__contact-us {
+  display: none;
   font-size: 1.8rem;
   position: relative;
   text-align: center;
@@ -180,4 +184,36 @@ body {
 }
 .header .bottom-bar__actions .menu-btn.active .menu-btn__row:nth-child(2)::before {
   transform: rotate(-90deg);
+}
+
+.main {
+  padding: 40px 0;
+}
+.main-banner__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3vw;
+}
+.main-banner__headliner {
+  overflow: hidden;
+  border-radius: 16px;
+}
+.main-banner__headliner > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main-banner__grid {
+  display: grid;
+  gap: 3vw;
+  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+}
+.main-banner__grid > div {
+  border-radius: 16px;
+  overflow: hidden;
+}
+.main-banner__grid > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }/*# sourceMappingURL=main.css.map */
