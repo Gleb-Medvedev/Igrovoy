@@ -1,0 +1,39 @@
+// function changeBgColor(images) {
+//    images.forEach((image, R, G, B) => {
+
+//       if (image.complete) {
+//          colorThief.getColor(image);
+
+//          R = colorThief.getColor(image)[0];
+//          G = colorThief.getColor(image)[1];
+//          B = colorThief.getColor(image)[2];
+
+//          image.closest('div').style.backgroundColor = 
+//                  'rgb(' + R + 
+//                  ',' + G + 
+//                  ',' + B + ')';
+//       } else {
+//          image.addEventListeren('load')
+//       }
+//    })
+// }
+
+
+// images.forEach((image) => {
+//      if (image.complete) {
+//         colorThief.getColor(image);
+//         console.log(colorThief.getColor(image));
+    
+//         image.closest('div').style.backgroundColor = 
+//         'rgb(' + colorThief.getColor(image)[0] + 
+//         ',' + colorThief.getColor(image)[1] + 
+//         ',' + colorThief.getColor(image)[2] + ')';
+//      } else {
+//         image.addEventListener('load', () => {
+//             image.closest('div').style.backgroundColor = 
+//                'rgb(' + colorThief.getColor(image)[0] + 
+//                ',' + colorThief.getColor(image)[1] + 
+//                ',' + colorThief.getColor(image)[2] + ')';
+//         })
+//      }
+// })

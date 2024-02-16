@@ -3,14 +3,30 @@
 @import url("./_vars.css");
 @import url("./global.css");
 body {
-  min-height: 100vh;
+  min-height: 1000px;
   background-color: var(--dark);
 }
 
 .header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
   padding-top: 20px;
   font-size: 2rem;
   color: var(--white);
+  overflow: hidden;
+}
+.header::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: "";
+  top: 0;
+  left: 0;
+  background: linear-gradient(to bottom, var(--dark), transparent);
+  z-index: -1;
 }
 .header-action {
   color: var(--white);
@@ -75,43 +91,6 @@ body {
 .header .top-bar__profile {
   margin-left: auto;
   padding: 5px;
-}
-.header .bottom-bar__contact-us {
-  display: none;
-  font-size: 1.8rem;
-  position: relative;
-  text-align: center;
-  border-radius: 18px;
-  color: currentColor;
-}
-.header .bottom-bar__contact-us-heading {
-  padding: 11.5px 18px;
-  display: block;
-}
-.header .bottom-bar__contact-us-list {
-  position: absolute;
-  width: 100%;
-  top: 100%;
-  left: 0;
-  transform: translateY(40%);
-  opacity: 0;
-  visibility: hidden;
-  transition: 300ms ease-out all;
-}
-.header .bottom-bar__contact-us-list.in-view {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-.header .bottom-bar__contact-us-item {
-  padding: 11.5px 18px;
-  display: block;
-  cursor: pointer;
-  border-radius: 18px;
-  border: 1px solid var(--green);
-}
-.header .bottom-bar__contact-us-item:last-child {
-  margin-top: -1px;
 }
 .header .bottom-bar__actions {
   margin-left: auto;
@@ -188,6 +167,7 @@ body {
 
 .main {
   padding: 40px 0;
+  margin-top: 148px;
 }
 .main-banner__content {
   display: grid;
@@ -222,6 +202,25 @@ body {
   overflow: hidden;
 }
 .main-banner__grid > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main .test {
+  padding: 40px 0;
+}
+.main .test .wrapper {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.main .test .image-wrapper {
+  height: 400px;
+  aspect-ratio: 4/5;
+  padding: 50px;
+}
+.main .test .image-wrapper > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
