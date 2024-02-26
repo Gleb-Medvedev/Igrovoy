@@ -4,8 +4,8 @@
 @import url('./global.css');
 
 body {
-    // min-height: 100vh;
-    min-height: 1000px;
+    min-height: 100vh;
+    // min-height: 1000px;
     background-color: var(--dark);
 }
 
@@ -18,50 +18,26 @@ body {
     padding-top: 20px;
     font-size: 2rem;
     color: var(--white);
-    overflow: hidden;
 
-    &::before {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        content: '';
-        top: 0;
-        left: 0;
-        background: linear-gradient(to bottom, var(--dark), transparent);
-        z-index: -1;
-    }
-
-    
     &-action {
-        color: var(--white);
         cursor: pointer;
         transition: 250ms ease-out all;
+        color: var(--white);
+        outline: 2px solid transparent;
+        width: 44px;
+        height: 44px;
 
-        &:not(.top-bar__logo) {
-            outline: 4px solid transparent;
-
-            &.active {
-                color: var(--green);
-            }
+        &:not(.bottom-bar__menu-btn) {
+            border-radius: 50%;
         }
 
-
-        
         & > svg {
-            width: 100%;
-            height: 100%;
             stroke: currentColor;
             fill: transparent;
         }
 
-        &:not(.bottom-bar__contact-us) {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-        }
-
-        &:focus {
-            outline: 4px solid currentColor;
+        &:focus-visible {
+            outline: 2px solid var(--green);
         }
     }
 
@@ -81,6 +57,8 @@ body {
     & .top-bar {        
         &__logo {
             overflow: hidden;
+            width: 44px;
+            height: 44px;
             
             &-img {
                 width: 100%;
@@ -121,6 +99,64 @@ body {
     }
 
     & .bottom-bar {
+        & .feedback {
+            position: relative;
+            padding: 6px;
+            color: var(--orange);
+            outline: 2px solid currentColor;
+
+            &:focus-visible {
+                outline: 2px solid var(--green);
+            }
+
+            &.active {
+                color: var(--green);
+
+                & .feedback-container {
+                    & > .feedback-movable-wrapper {
+                        transform: translateY(-50%);
+                    }
+                }
+            }
+
+            @keyframes feedBackAnimation {
+                0%, 40% {
+                    transform: rotate(0);
+                } 10%, 30% {
+                    transform: rotate(15deg);
+                } 20% {
+                    transform: rotate(-15deg);
+                }
+            }
+
+            &:not(.active) {
+                & .feedback-container {
+                    animation: feedBackAnimation infinite ease-out 4s;
+                }
+            }
+
+            &-container {
+                border-radius: 50%;
+                height: 100%;
+                overflow: hidden;
+            }
+
+            &-movable-wrapper {
+                height: 200%;
+                transition: 250ms ease-out all;
+            }
+
+            &__img-container {
+                height: 50%;
+                max-height: 32px;
+                aspect-ratio: 1 / 1;
+
+                & > svg {
+                    stroke: currentColor;
+                }
+            }
+        }
+
         &__actions {
             margin-left: auto;
             display: flex;
@@ -143,18 +179,16 @@ body {
                 &__movable-wrapper {
                     height: 200%;
                     transition: 250ms ease-out all;
+                }
 
-                    & > div {
-                        height: 50%;
+                &__img-container {
+                    height: 50%;
+                    max-height: 32px;
+                    aspect-ratio: 1 / 1;
 
-                        & > svg {
-                            width: 100%;
-                            height: 100%;
-                            stroke: currentColor;
-                            fill: transparent;
-                            margin: 0;
-                        }
-                    } 
+                    & > svg {
+                        stroke: var(--white);
+                    }
                 }
 
                 &.active {
@@ -238,30 +272,65 @@ body {
         }
 
         &__headliner {
+            position: relative;
+            min-height: 0;
+            min-width: 0;
             overflow: hidden;
             border-radius: 16px;
+
+            &-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+                height: 10%;
+                aspect-ratio: 1 / 1;
+                min-height: 44px;
+                border: 2px solid var(--green);
+                opacity: .4;
+                z-index: 2;
+                transition: 250ms ease-in opacity;
+                cursor: pointer;
+                padding: 5px;
+
+                & > svg {
+                    display: block;
+                    transform: rotate(-45deg);
+                    fill: var(--green);
+                }
+            }
+
+            &-prev-btn {
+                left: 15px;
+            }
+
+            &-next-btn {
+                right: 15px;
+            }
+
+            &:hover {
+                & .main-banner__headliner-btn {
+                    opacity: 1;
+                }
+            }
             
-            & .swiper {
+            & .headliner-slider {
                 height: 100%;
                 
-                &-wrapper {
-                    height: 100%;
+                &__slide {
+                    border-radius: 16px;
+                    overflow: hidden;
 
-                    & .swiper-slide {
-                        align-items: stretch;
-
-                        & > img {
-                            width: 100%;
-                            height: 100%;
-                            -o-object-fit: cover;
-                               object-fit: cover;
-                        }
+                    & > img {
+                        width: 100%;
+                        height: 100%;
+                        -o-object-fit: cover;
+                            object-fit: cover;
                     }
                 }
             }
         }
 
-        &__grid {
+        & .grid-gallery {
             display: grid;
             gap: 20px;
             grid-template: repeat(2, 1fr) / repeat(2, 1fr);
@@ -292,7 +361,7 @@ body {
 
         .image-wrapper {
             height: 400px;
-            aspect-ratio: 4 /  5;
+            aspect-ratio: 4 / 5;
             padding: 50px;
 
             & > img {

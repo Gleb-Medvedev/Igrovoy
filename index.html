@@ -13,7 +13,7 @@
         <div class="header-container container">
             <div class="header__top-bar top-bar">
 
-                <div class="top-bar__logo header-action" title="Вернуться на главную страницу" tabindex="1">
+                <div class="top-bar__logo" title="Вернуться на главную страницу">
                     <a href="index.html" class="top-bar__logo-link">
                         <img src="assets/images/logo/logo_100.png" alt="логотип компании" class="top-bar__logo-img">
                     </a>
@@ -29,9 +29,9 @@
                     </ul>
                 </nav>
 
-                <button class="top-bar__profile header-action" tabindex="2" title="Профиль">
+                <button class="top-bar__profile header-action" tabindex="1" title="Профиль">
                     <svg aria-hidden="true" viewBox="3 3 18 18">
-                        <path stroke="currentColor" stroke-width="1.5" d="M7 17v1c0 .6.4 1 1 1h8c.6 0 1-.4 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                        <path stroke-width="1.5" d="M7 17v1c0 .6.4 1 1 1h8c.6 0 1-.4 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                     </svg>
                     <!-- <div> ИКОНКА КОЛОКОЛЬЧИКА 
                         <svg class="w-[32px] h-[32px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -47,31 +47,58 @@
             </div>
 
             <div class="header__bottom-bar bottom-bar">
+                <button class="bottom-bar__feedback feedback header-action" type="menu" tabindex="5" title="Связаться с нами!">
+                    <div class="feedback-container">
+                        <div class="feedback-movable-wrapper">
+                            <div class="feedback__img-container">
+                                <svg aria-hidden="true" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18.4 14.8-1.2-1.3a1.7 1.7 0 0 0-2.4 0l-.7.7a1.7 1.7 0 0 1-2.4 0l-1.9-1.9a1.7 1.7 0 0 1 0-2.4l.7-.6a1.7 1.7 0 0 0 0-2.5L9.2 5.6a1.6 1.6 0 0 0-2.4 0c-3.2 3.2-1.7 6.9 1.5 10 3.2 3.3 7 4.8 10.1 1.6a1.6 1.6 0 0 0 0-2.4Z"/>
+                                </svg>
+                            </div>
+                            <div class="feedback__img-container">
+                                <svg aria-hidden="true" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="feedback__list">
+                        <li class="feedback__list-item"><a href="tel: +79786725232">+7 978 672 52 32</a></li>
+                        <li class="feedback__list-item">sda</li>
+                        <li class="feedback__list-item">das</li>
+                    </ul>
+
+                </button>
+
+
+
+
                 <div class="bottom-bar__actions">
-                    <button class="bottom-bar__search-bar search-bar header-action" tabindex="5" title="Поиск">
+                    <button class="bottom-bar__search-bar search-bar header-action" tabindex="4" title="Поиск">
                         <div class="search-bar-container">
                             <div class="search-bar__movable-wrapper">
-                                <div>
+                                <div class="search-bar__img-container">
                                     <svg aria-hidden="true" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-width="1.5" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                                        <path stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
                                     </svg>
                                 </div>
-                                <div>
+                                <div class="search-bar__img-container">
                                     <svg aria-hidden="true" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18 18 6m0 12L6 6"/>
-                                      </svg>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6m0 12L6 6"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
                     </button>
 
-                    <button class="bottom-bar__cart cart header-action" tabindex="4" title="Корзина">
+                    <button class="bottom-bar__cart cart header-action" tabindex="3" title="Корзина">
                         <svg aria-hidden="true" viewBox="3 2 19 19">
                             <path stroke-width="1.5" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.3L19 7H7.3"/>
                             </svg>
                     </button>
 
-                    <button class="bottom-bar__menu-btn menu-btn header-action" tabindex="3" title="Меню">
+                    <button class="bottom-bar__menu-btn menu-btn header-action" tabindex="2" title="Меню">
                         <div class="menu-btn__row"></div>
                         <div class="menu-btn__row"></div>
                         <div class="menu-btn__row"></div>
@@ -83,21 +110,31 @@
     </header>
 
     <main class="main">
-        <section class="main-banner">
+        <section class="section main-banner">
             <div class="container">
                 <div class="main-banner__content">
                     <div class="main-banner__headliner">
-                        <div class="swiper">
+                        <div class="main-banner__headliner-prev-btn main-banner__headliner-btn">
+                            <svg viewBox="1 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 16.9V7a1 1 0 0 0-1.6-.8l-6 5a1 1 0 0 0 0 1.5l6 4.9a1 1 0 0 0 1.6-.8Z"/>
+                            </svg>
+                        </div>
+                        <div class="main-banner__headliner-next-btn main-banner__headliner-btn">
+                            <svg viewBox="-1 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16.9V7a1 1 0 0 1 1.6-.8l6 5a1 1 0 0 1 0 1.5l-6 4.9a1 1 0 0 1-1.6-.8Z"/>
+                            </svg>
+                        </div>
+                        <div class="main-banner__headliner-slider headliner-slider swiper">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
+                                <div class="headliner-slider__slide swiper-slide">
                                     <img src="../bg test/test.jpg" alt="">
                                 </div>
 
-                                <div class="swiper-slide">
+                                <div class="headliner-slider__slide swiper-slide">
                                     <img src="../bg test/test.jpg" alt="">
                                 </div>
 
-                                <div class="swiper-slide">
+                                <div class="headliner-slider__slide swiper-slide">
                                     <img src="../bg test/test.jpg" alt="">
                                 </div>
 
@@ -105,13 +142,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="main-banner__grid">
+                    <div class="main-banner__grid-gallery grid-gallery">
                         <div><img src="../bg test/test.jpg" alt=""></div>
                         <div><img src="../bg test/test.jpg" alt=""></div>
                         <div><img src="../bg test/test.jpg" alt=""></div>
                         <div><img src="../bg test/test.jpg" alt=""></div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="section hero">
+            <div class="hero-container container">
+                
             </div>
         </section>
        
