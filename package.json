@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "colorthief": "^2.4.0"
+    "colorthief": "^2.4.0",
+    "json-server": "^1.0.0-alpha.23"
+  },
+  "scripts": {
+    "server": "json-server -w server/db.json"
   }
 }

@@ -3,9 +3,14 @@
 @import url('./_vars.css');
 @import url('./global.css');
 
-body {
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--orange) var(--dark);
+    scrollbar-gutter: stable;
+}
+
+body, html {
     min-height: 100vh;
-    // min-height: 1000px;
     background-color: var(--dark);
 }
 
@@ -170,7 +175,6 @@ body {
             }
 
             & .search-bar {
-                
                 &-container {
                     height: 100%;
                     overflow: hidden;
@@ -187,7 +191,8 @@ body {
                     aspect-ratio: 1 / 1;
 
                     & > svg {
-                        stroke: var(--white);
+                        stroke: currentColor;
+                        fill: transparent;
                     }
                 }
 
@@ -369,6 +374,132 @@ body {
                 height: 100%;
                 -o-object-fit: cover;
                    object-fit: cover;
+            }
+        }
+    }
+}
+
+
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+
+    &-container {
+        height: 100%;
+        max-height: 100%;
+        overflow: hidden;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    &-close-btn {
+        color: var(--white);
+        padding: 12px 24px;
+        border: 2px solid var(--orange);
+        font-size: 3rem;
+    }
+}
+
+.search-popup {
+    z-index: 1000;
+    transition: 250ms ease-out all;
+    visibility: hidden;
+    opacity: 0;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.864);
+        backdrop-filter: blur(6px);
+    }
+
+    &.in-view {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &-input-container {
+        position: relative;
+        margin-top: 30px;
+    }
+
+    &__input {
+        width: calc(100% - 68px);
+        padding: 6.5px 44px;
+        line-height: 150%;
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: .09rem;
+        border-radius: 18px;
+        border-bottom: 2px solid var(--orange);
+        color: var(--white);
+
+        &::placeholder {
+            text-transform: lowercase;
+            font-weight: 400;
+            letter-spacing: .3rem;
+            color: currentColor;
+        }
+
+        &-btn {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 2px solid var(--orange);
+            padding: 4px;
+            color: var(--white);
+
+            & > svg {
+                fill: transparent;
+                stroke: currentColor;
+            }
+        }
+
+        &-filter {
+            left: 0;
+        }
+
+        &-search {
+            right: 4px;
+        }
+
+        &-clear {
+            right: 68px;
+        }
+    }
+
+    &__output {
+        font-size: 1.4rem;
+        color: var(--white);
+        letter-spacing: .1rem;
+        overflow-x: auto;
+        height: calc(100% - 159px);
+        margin-top: 40px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--orange) var(--dark);
+        scrollbar-gutter: stable;
+
+        &-list {
+            & > li {
+                padding: 4px;
+    
+                &:not(:last-child) {
+                    margin-bottom: 12px;
+                }
             }
         }
     }
