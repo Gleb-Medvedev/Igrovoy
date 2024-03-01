@@ -2,13 +2,7 @@
 @import url("_reset.css");
 @import url("./_vars.css");
 @import url("./global.css");
-html {
-  scrollbar-width: thin;
-  scrollbar-color: var(--orange) var(--dark);
-  scrollbar-gutter: stable;
-}
-
-body, html {
+body {
   min-height: 100vh;
   background-color: var(--dark);
 }
@@ -90,72 +84,138 @@ body, html {
   margin-left: auto;
   padding: 5px;
 }
-.header .bottom-bar .feedback {
+.header .bottom-bar .contacts {
   position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 44px;
+          flex: 0 0 44px;
+  height: 44px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
   padding: 6px;
   color: var(--orange);
   outline: 2px solid currentColor;
 }
-.header .bottom-bar .feedback:focus-visible {
-  outline: 2px solid var(--green);
-}
-.header .bottom-bar .feedback.active {
-  color: var(--green);
-}
-.header .bottom-bar .feedback.active .feedback-container > .feedback-movable-wrapper {
+.header .bottom-bar .contacts.in-view .contacts-container > .contacts-movable-wrapper {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-@-webkit-keyframes feedBackAnimation {
-  0%, 40% {
+.header .bottom-bar .contacts.in-view .contacts__list {
+  visibility: visible;
+}
+@-webkit-keyframes contactsAnimation {
+  0%, 25% {
     -webkit-transform: rotate(0);
             transform: rotate(0);
   }
-  10%, 30% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+  5%, 15% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
   }
-  20% {
-    -webkit-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+  10%, 20% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
   }
 }
-@keyframes feedBackAnimation {
-  0%, 40% {
+@keyframes contactsAnimation {
+  0%, 25% {
     -webkit-transform: rotate(0);
             transform: rotate(0);
   }
-  10%, 30% {
-    -webkit-transform: rotate(15deg);
-            transform: rotate(15deg);
+  5%, 15% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
   }
-  20% {
-    -webkit-transform: rotate(-15deg);
-            transform: rotate(-15deg);
+  10%, 20% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
   }
 }
-.header .bottom-bar .feedback:not(.active) .feedback-container {
-  -webkit-animation: feedBackAnimation infinite ease-out 4s;
-          animation: feedBackAnimation infinite ease-out 4s;
+.header .bottom-bar .contacts:not(.in-view) .contacts-container {
+  -webkit-animation: contactsAnimation infinite ease-out 7s 1s;
+          animation: contactsAnimation infinite ease-out 7s 1s;
 }
-.header .bottom-bar .feedback-container {
-  border-radius: 50%;
+.header .bottom-bar .contacts-btn {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
   height: 100%;
+  border-radius: 50%;
+}
+.header .bottom-bar .contacts-btn:focus-visible {
+  outline: 2px solid var(--green);
+}
+.header .bottom-bar .contacts-container {
+  height: 100%;
+  max-height: 32px;
   overflow: hidden;
 }
-.header .bottom-bar .feedback-movable-wrapper {
+.header .bottom-bar .contacts-movable-wrapper {
+  max-width: 32px;
+  max-height: 64px;
   height: 200%;
-  -webkit-transition: 250ms ease-out all;
-  transition: 250ms ease-out all;
+  -webkit-transition: 250ms ease-out transform;
+  transition: 250ms ease-out transform;
 }
-.header .bottom-bar .feedback__img-container {
+.header .bottom-bar .contacts-img-wrapper {
   height: 50%;
   max-height: 32px;
-  aspect-ratio: 1/1;
 }
-.header .bottom-bar .feedback__img-container > svg {
+.header .bottom-bar .contacts__img {
+  fill: transparent;
   stroke: currentColor;
+}
+.header .bottom-bar .contacts__list {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  padding: 20px 0;
+  -webkit-transition: 250ms ease-out all;
+  transition: 250ms ease-out all;
+  visibility: hidden;
+}
+.header .bottom-bar .contacts__list-item {
+  position: relative;
+  color: var(--dark);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 150%;
+  text-align: center;
+  border-radius: 16px;
+  background-color: var(--orange);
+  -webkit-transition: 250ms ease-out all;
+  transition: 250ms ease-out all;
+  visibility: hidden;
+  opacity: 0;
+}
+.header .bottom-bar .contacts__list-item::before {
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 1/1;
+  top: 0;
+  left: 0;
+  content: "";
+  background: url("../images/logo/VK-Logo.png");
+  background-size: contain;
+}
+.header .bottom-bar .contacts__list-item.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.header .bottom-bar .contacts__list-item-wrapper {
+  display: block;
+  padding: 6px 10px 6px 50px;
+  white-space: nowrap;
+}
+.header .bottom-bar .contacts__list-item-wrapper > * {
+  display: block;
+}
+.header .bottom-bar .contacts__list-item:not(:last-child) {
+  margin-bottom: 20px;
 }
 .header .bottom-bar__actions {
   margin-left: auto;

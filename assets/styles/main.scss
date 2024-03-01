@@ -3,13 +3,7 @@
 @import url('./_vars.css');
 @import url('./global.css');
 
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--orange) var(--dark);
-    scrollbar-gutter: stable;
-}
-
-body, html {
+body {
     min-height: 100vh;
     background-color: var(--dark);
 }
@@ -104,61 +98,194 @@ body, html {
     }
 
     & .bottom-bar {
-        & .feedback {
+        & .contacts {
             position: relative;
+            flex: 0 0 44px;
+            height: 44px;
+            aspect-ratio:  1 / 1;
+            border-radius: 50%;
             padding: 6px;
             color: var(--orange);
             outline: 2px solid currentColor;
 
-            &:focus-visible {
-                outline: 2px solid var(--green);
-            }
-
-            &.active {
-                color: var(--green);
-
-                & .feedback-container {
-                    & > .feedback-movable-wrapper {
+            &.in-view {
+                & .contacts-container {
+                    & > .contacts-movable-wrapper {
                         transform: translateY(-50%);
                     }
                 }
-            }
 
-            @keyframes feedBackAnimation {
-                0%, 40% {
-                    transform: rotate(0);
-                } 10%, 30% {
-                    transform: rotate(15deg);
-                } 20% {
-                    transform: rotate(-15deg);
+                & .contacts__list {
+                    visibility: visible;
                 }
             }
 
-            &:not(.active) {
-                & .feedback-container {
-                    animation: feedBackAnimation infinite ease-out 4s;
+            @keyframes contactsAnimation {
+                0%, 25% {
+                    transform: rotate(0);
+                } 5%, 15% {
+                    transform: rotate(30deg);
+                } 10%, 20% {
+                    transform: rotate(-30deg);
+                }
+            }
+
+            &:not(.in-view) {
+                & .contacts-container {
+                    animation: contactsAnimation infinite ease-out 7s 1s;
+                }
+            }
+
+            &-btn {
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                z-index: 100;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+
+                &:focus-visible {
+                    outline: 2px solid var(--green);
                 }
             }
 
             &-container {
-                border-radius: 50%;
                 height: 100%;
+                max-height: 32px;
                 overflow: hidden;
             }
 
             &-movable-wrapper {
+                max-width: 32px;
+                max-height: 64px;
                 height: 200%;
-                transition: 250ms ease-out all;
+                transition: 250ms ease-out transform;
             }
 
-            &__img-container {
+            &-img-wrapper {
                 height: 50%;
                 max-height: 32px;
-                aspect-ratio: 1 / 1;
+            }
 
-                & > svg {
-                    stroke: currentColor;
+            &__img {
+                fill: transparent;
+                stroke: currentColor;
+            }
+
+            &__list {
+                position: absolute;
+                top: calc(100% + 2px);
+                left: 0;
+                padding: 20px 0;
+                transition: 250ms ease-out all;
+                visibility: hidden;
+
+                &-item {
+                    position: relative;
+                    color: var(--dark);
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    line-height: 150%;
+                    text-align: center;
+                    border-radius: 16px;
+                    // overflow: hidden;
+                    background-color: var(--orange);
+                    transition: 250ms ease-out all;
+                    visibility: hidden;
+                    opacity: 0;
+
+                    &::before {
+                        position: absolute;
+                        height: 100%;
+                        aspect-ratio: 1 / 1;
+                        top: 0;
+                        left: 0;
+                        content: '';
+                        background: url('../images/logo/VK-Logo.png');
+                        background-size: contain;
+                    }
+
+                    &.visible {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+
+                    &-wrapper {
+                        display: block;
+                        padding: 6px 10px 6px 50px;
+                        white-space: nowrap;
+
+                        & > * {
+                            display: block;
+                        }
+                    }
+
+
+
+                    // &-link {
+                    //     display: block;
+                    //     overflow: hidden;
+                    // }
+
+
+
+
+
+                    // &-img {
+                    //     display: block;
+                    //     height: 100%;
+                    //     width: 100%;
+                    //     object-fit: contain;
+                    // }
+
+
+
+
+
+                    // &:nth-child(3) {
+                    //     box-shadow: 0 0 9px 3px #0077FF;
+                    // }
+
+                    // &:nth-child(4) {
+                    //     box-shadow: 0 0 9px 3px #97CF26;
+                    // }
+
+
+
+
+
+                    // &:not(:nth-child(-n+2)) {
+                    //     border-radius: 50%;
+                    //     width: 44px;
+                    //     height: 44px;
+                    //     outline: none;
+                    //     padding: unset;
+
+                    //     & > * {
+                    //         padding: unset;
+                    //     }
+                    // }
+
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
                 }
+
+                // &-link {
+                //     display: block;
+                //     height: 100%;
+                //     padding: 11.5px 20px;
+                //     white-space: nowrap;
+                //     overflow: hidden;
+
+                //     & > img {
+                //         width: 100%;
+                //         height: 100%;
+                //         object-fit: cover;
+                //     }
+                // }
             }
         }
 

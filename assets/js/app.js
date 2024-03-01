@@ -133,3 +133,46 @@ document.querySelector('.popup-close-btn').addEventListener('click', () => {
   document.querySelector('.search-popup').classList.remove('in-view');
   document.querySelector('body').style.overflow = "";
 })
+
+
+
+document.querySelector('.contacts-btn').addEventListener('click', () => {
+
+  document.querySelector('.bottom-bar__contacts').classList.toggle('in-view');
+
+  if (document.querySelector('.bottom-bar__contacts').classList.contains('in-view')) {
+    document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
+      setTimeout(function() {
+        el.classList.add('visible');
+      }, index * 150)
+    }) 
+  } else {
+    document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
+      setTimeout(function() {
+        el.classList.remove('visible');
+      }, index * 150)
+    }) 
+  }
+
+  
+
+  // if (document.querySelector('.bottom-bar__contacts').classList.contains('in-view')) {
+  //   document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
+  //     setTimeout(function() {
+  //       el.classList.add('visible');
+  //       el.style.transform = `translateY(0)`;
+  //     }
+  //     ), index * 500;
+  //   })
+  // } else {
+  //   document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
+  //     setTimeout(function() {
+  //       el.classList.remove('visible');
+  //       el.style.transform = `translateY(-${index * 100}%)`;
+  //     }
+  //     ), index * 500;
+  //   })
+  // }
+
+
+})
