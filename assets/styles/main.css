@@ -96,6 +96,26 @@ body {
   color: var(--orange);
   outline: 2px solid currentColor;
 }
+.header .bottom-bar .contacts::before {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 250ms ease-out all;
+  transition: 250ms ease-out all;
+}
+.header .bottom-bar .contacts.in-view::before {
+  visibility: visible;
+  opacity: 1;
+}
 .header .bottom-bar .contacts.in-view .contacts-container > .contacts-movable-wrapper {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -131,6 +151,10 @@ body {
     -webkit-transform: rotate(-30deg);
             transform: rotate(-30deg);
   }
+}
+.header .bottom-bar .contacts:not(.in-view)::before {
+  -webkit-transition-delay: 350ms;
+          transition-delay: 350ms;
 }
 .header .bottom-bar .contacts:not(.in-view) .contacts-container {
   -webkit-animation: contactsAnimation infinite ease-out 7s 1s;
@@ -179,43 +203,46 @@ body {
   visibility: hidden;
 }
 .header .bottom-bar .contacts__list-item {
-  position: relative;
-  color: var(--dark);
+  color: var(--white);
   font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 150%;
+  outline: 2px solid var(--orange);
   text-align: center;
   border-radius: 16px;
-  background-color: var(--orange);
+  overflow: hidden;
   -webkit-transition: 250ms ease-out all;
   transition: 250ms ease-out all;
   visibility: hidden;
   opacity: 0;
 }
-.header .bottom-bar .contacts__list-item::before {
-  position: absolute;
-  height: 100%;
-  aspect-ratio: 1/1;
-  top: 0;
-  left: 0;
-  content: "";
-  background: url("../images/logo/VK-Logo.png");
-  background-size: contain;
-}
 .header .bottom-bar .contacts__list-item.visible {
   visibility: visible;
   opacity: 1;
 }
-.header .bottom-bar .contacts__list-item-wrapper {
-  display: block;
-  padding: 6px 10px 6px 50px;
-  white-space: nowrap;
-}
-.header .bottom-bar .contacts__list-item-wrapper > * {
-  display: block;
-}
 .header .bottom-bar .contacts__list-item:not(:last-child) {
   margin-bottom: 20px;
+}
+.header .bottom-bar .contacts__list-item-link {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6px 12px;
+}
+.header .bottom-bar .contacts__list-item-link > .link-item-wrapper {
+  max-height: 32px;
+}
+.header .bottom-bar .contacts__list-item-link > .link-item-wrapper > svg {
+  fill: transparent;
+  stroke: var(--white);
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.header .bottom-bar .contacts__list-item-content {
+  white-space: nowrap;
+  letter-spacing: 0.15rem;
+  padding-left: 16px;
+  text-transform: uppercase;
 }
 .header .bottom-bar__actions {
   margin-left: auto;
