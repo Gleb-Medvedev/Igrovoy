@@ -136,43 +136,40 @@ document.querySelector('.popup-close-btn').addEventListener('click', () => {
 
 
 
-document.querySelector('.contacts-btn').addEventListener('click', () => {
+//Функция вызова блока фокусировки внимания (Затемнение + блюр)
 
-  document.querySelector('.bottom-bar__contacts').classList.toggle('in-view');
+function toggleFocusBlock () {
+  const focusBlock = document.querySelector('.focus-block');
 
-  if (document.querySelector('.bottom-bar__contacts').classList.contains('in-view')) {
-    document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
-      setTimeout(function() {
+  focusBlock.classList.contains('focused') ? focusBlock.classList.remove('focused') : focusBlock.classList.add('focused');
+}
+
+//Функция вызова блока фокусировки внимания (Затемнение + блюр) -- ENDS
+
+
+//ФУНКЦИЯ ВЫЗОВА HEADER CONTACTS
+
+function toggleHeaderContacts (list, listItems) {
+  list.classList.toggle('in-view');
+  toggleFocusBlock();
+
+  if (list.classList.contains('in-view')) {
+    listItems.forEach((el, index) => {
+      setTimeout(function () {
         el.classList.add('visible');
       }, index * 150)
     }) 
   } else {
-    document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
-      setTimeout(function() {
+    listItems.forEach((el, index) => {
+      setTimeout(function () {
         el.classList.remove('visible');
-      }, index * 150)
+      }, ((index - listItems.length) * -1) * 150)
     }) 
   }
+}
 
-  
-
-  // if (document.querySelector('.bottom-bar__contacts').classList.contains('in-view')) {
-  //   document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
-  //     setTimeout(function() {
-  //       el.classList.add('visible');
-  //       el.style.transform = `translateY(0)`;
-  //     }
-  //     ), index * 500;
-  //   })
-  // } else {
-  //   document.querySelectorAll('.contacts__list-item').forEach((el, index) => {
-  //     setTimeout(function() {
-  //       el.classList.remove('visible');
-  //       el.style.transform = `translateY(-${index * 100}%)`;
-  //     }
-  //     ), index * 500;
-  //   })
-  // }
-
-
+document.querySelector('.contacts-btn').addEventListener('click', () => {
+  toggleHeaderContacts(document.querySelector('.bottom-bar__contacts'), document.querySelectorAll('.contacts__list-item'))
 })
+
+//ФУНКЦИЯ ВЫЗОВА HEADER CONTACTS -- ENDS

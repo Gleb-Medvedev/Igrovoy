@@ -4,4 +4,45 @@
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.popup-container {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.popup-close-btn {
+  color: var(--white);
+  padding: 12px 24px;
+  border: 2px solid var(--orange);
+  font-size: 3rem;
+}
+
+.focus-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.85);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: 600ms ease-out all;
+  transition: 600ms ease-out all;
+}
+.focus-block.focused {
+  visibility: visible;
+  opacity: 1;
 }/*# sourceMappingURL=global.css.map */
