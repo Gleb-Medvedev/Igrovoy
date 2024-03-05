@@ -16,35 +16,32 @@ const mainBannerSlider = new Swiper('.swiper', {
       },
 });
 
-//reseive data from local JSON Server
+//reseive data from local JSON Server.
+
+//Type "npm run server"
 
 let dataBase; //Глобальная переменная, хранящая данные
 
-async function getDataBase(url) {
-  let reseivedData = await fetch(url);
+async function getDataBase(url, reseivedData) {
+
+  try {
+    reseivedData = await fetch(url);
+  } catch (err) {
+    alert(`Ошибка базы данных: ${err}\nДля запуска локального сервера используйте "npm run server"`);
+    return;
+  }
 
   dataBase = await reseivedData.json();
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getDataBase('http://localhost:3000/products');
-  console.log(dataBase);
+  dataBase ? console.log(dataBase) : console.log('Ошибка получения данных из базы');;
 })
 
-// document.querySelector('.bottom-bar__search-bar').addEventListener('click', () => {
-//   document.querySelector('.bottom-bar__search-bar').classList.toggle('active');
-// })
+//reseive data from local JSON Server -- ENDS
 
-// document.querySelector('.bottom-bar__menu-btn').addEventListener('click', () => {
-//   document.querySelector('.bottom-bar__menu-btn').classList.toggle('active');
-// })
-
-// document.querySelector('.bottom-bar__feedback').addEventListener('click', () => {
-//   document.querySelector('.bottom-bar__feedback').classList.toggle('active');
-// })
-
-
-
+//колхозный лайв поиск
 
 function searchBarToggle(searchBtn) {
   searchBtn.addEventListener('click', () => {
@@ -54,44 +51,6 @@ function searchBarToggle(searchBtn) {
 }
 
 searchBarToggle(document.querySelector('.bottom-bar__search-bar'));
-
-
-
-
-
-
-
-
-
-
-
-//Live Search
-
-
-// searchInput.addEventListener('input', function () {
-
-//   searchResult.innerHTML = '';
-
-//   let value = searchInput.value.toLowerCase();
-
-//   if (this.value && this.value.length > 2) {
-
-//     for (const result of dataBase) {
-//       let name = result.name.toLowerCase();
-
-//       if (name.includes(value)) {
-//         const tempSearchResult = document.createElement('li');
-
-//         tempSearchResult.innerText = result.name;
-
-//         searchResult.append(tempSearchResult);
-//       } 
-//     }
-//   }
-// })
-
-
-
 
 const startSearch = document.querySelector('.search-popup__input-btn');
 const searchInput = document.querySelector('.search-popup__input');
@@ -135,23 +94,17 @@ document.querySelector('.popup-close-btn').addEventListener('click', () => {
 })
 
 
+//колхозный лайв поиск -- ENDS
 
-//Функция вызова блока фокусировки внимания (Затемнение + блюр)
+const focusBlock = document.querySelector('.focus-block');
 
-function toggleFocusBlock () {
-  const focusBlock = document.querySelector('.focus-block');
-
-  focusBlock.classList.contains('focused') ? focusBlock.classList.remove('focused') : focusBlock.classList.add('focused');
-}
-
-//Функция вызова блока фокусировки внимания (Затемнение + блюр) -- ENDS
-
+// focusBlock.classList.contains('focused') ? focusBlock.classList.remove('focused') : focusBlock.classList.add('focused');
 
 //ФУНКЦИЯ ВЫЗОВА HEADER CONTACTS
 
 function toggleHeaderContacts (list, listItems) {
   list.classList.toggle('in-view');
-  toggleFocusBlock();
+  focusBlock.classList.add('focused');
 
   if (list.classList.contains('in-view')) {
     listItems.forEach((el, index) => {
@@ -160,6 +113,18 @@ function toggleHeaderContacts (list, listItems) {
       }, index * 150)
     }) 
   } else {
+    //проверка наличия класса "in-view" для Header__contacts
+    //Нужно для удаления класса "visible" для элементов списка при очень быстром клике кнопки отображения всего списка
+    setTimeout(function () {
+      list.classList.remove('in-view');
+      listItems.forEach(el => {
+        el.classList.remove('visible');
+        focusBlock.classList.remove('focused');
+      })
+    }, listItems.length * 150)
+
+    //проверка наличия класса для Header__contacts -- ENDS
+
     listItems.forEach((el, index) => {
       setTimeout(function () {
         el.classList.remove('visible');

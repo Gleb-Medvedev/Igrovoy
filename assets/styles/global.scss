@@ -30,17 +30,12 @@
 }
 
 .focus-block {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(6px);
     visibility: hidden;
     opacity: 0;
-    transition: 600ms ease-out all;
+    transition: 600ms linear opacity, 600ms linear visibility;
 
     &.focused {
         visibility: visible;

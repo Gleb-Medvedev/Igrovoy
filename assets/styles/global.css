@@ -28,19 +28,14 @@
 }
 
 .focus-block {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.85);
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: 600ms ease-out all;
-  transition: 600ms ease-out all;
+  -webkit-transition: 600ms linear opacity, 600ms linear visibility;
+  transition: 600ms linear opacity, 600ms linear visibility;
 }
 .focus-block.focused {
   visibility: visible;
