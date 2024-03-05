@@ -36,7 +36,7 @@ async function getDataBase(url, reseivedData) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await getDataBase('http://localhost:3000/products');
-  dataBase ? console.log(dataBase) : console.log('Ошибка получения данных из базы');;
+  dataBase ? console.log(dataBase) : console.log('Ошибка получения данных из базы');
 })
 
 //reseive data from local JSON Server -- ENDS
@@ -111,30 +111,40 @@ function toggleHeaderContacts (list, listItems) {
       setTimeout(function () {
         el.classList.add('visible');
       }, index * 150)
-    }) 
+    })
   } else {
-    //проверка наличия класса "in-view" для Header__contacts
-    //Нужно для удаления класса "visible" для элементов списка при очень быстром клике кнопки отображения всего списка
-    setTimeout(function () {
-      list.classList.remove('in-view');
-      listItems.forEach(el => {
-        el.classList.remove('visible');
-        focusBlock.classList.remove('focused');
-      })
-    }, listItems.length * 150)
-
-    //проверка наличия класса для Header__contacts -- ENDS
-
+    focusBlock.classList.remove('focused');
     listItems.forEach((el, index) => {
       setTimeout(function () {
         el.classList.remove('visible');
-      }, ((index - listItems.length) * -1) * 150)
-    }) 
+      }, ((listItems.length - 1) - index) * 150)
+    })
+
+
+
   }
+  //проверка наличия класса "in-view" для Header__contacts
+  //Нужно для удаления класса "visible" для элементов списка при очень быстром клике кнопки отображения всего списка
+  setTimeout(function () {
+    if (!list.classList.contains('in-view') && listItems[listItems.length - 1].classList.contains('visible')) {
+      setTimeout(function () {
+        listItems.forEach(el => {
+          el.classList.remove('visible');
+        })
+      }, listItems.length * 150)
+    } else if (list.classList.contains('in-view') && !listItems[listItems.length - 1].classList.contains('visible')) {
+      setTimeout(function () {
+        listItems.forEach(el => {
+          el.classList.add('visible');
+        })
+      }, listItems.length * 150)
+    }
+  }, listItems.length * 150)
+  //проверка наличия класса для Header__contacts -- ENDS
 }
 
 document.querySelector('.contacts-btn').addEventListener('click', () => {
-  toggleHeaderContacts(document.querySelector('.bottom-bar__contacts'), document.querySelectorAll('.contacts__list-item'))
+  toggleHeaderContacts(document.querySelector('.bottom-bar__contacts'), document.querySelectorAll('.contacts__list-item'));
 })
 
 //ФУНКЦИЯ ВЫЗОВА HEADER CONTACTS -- ENDS
