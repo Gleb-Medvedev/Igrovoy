@@ -35,7 +35,7 @@
     backdrop-filter: blur(6px);
     visibility: hidden;
     opacity: 0;
-    transition: 600ms linear opacity, 600ms linear visibility;
+    transition: 300ms linear opacity, 300ms linear visibility;
 
     &.focused {
         visibility: visible;

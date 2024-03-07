@@ -351,18 +351,21 @@ body {
         &__headliner {
             position: relative;
             min-height: 0;
+            border-radius: 16px;
+            height: 100%;
             min-width: 0;
             overflow: hidden;
-            border-radius: 16px;
 
             &-btn {
+                color: var(--orange);
                 position: absolute;
                 top: 50%;
-                transform: translateY(-50%) rotate(45deg);
+                transform: translateY(-50%);
                 height: 10%;
                 aspect-ratio: 1 / 1;
                 min-height: 44px;
-                border: 2px solid var(--green);
+                outline: 2px solid currentColor;
+                border-radius: 50%;
                 opacity: .4;
                 z-index: 2;
                 transition: 250ms ease-in opacity;
@@ -370,18 +373,16 @@ body {
                 padding: 5px;
 
                 & > svg {
-                    display: block;
-                    transform: rotate(-45deg);
-                    fill: var(--green);
+                    fill: currentColor;
                 }
             }
 
             &-prev-btn {
-                left: 15px;
+                left: 2px;
             }
 
             &-next-btn {
-                right: 15px;
+                right: 2px;
             }
 
             &:hover {
@@ -389,11 +390,60 @@ body {
                     opacity: 1;
                 }
             }
+
+            & .headliner-pagination {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: auto !important;
+                z-index: 1;
+
+                & > .swiper-pagination-bullet {
+                    color: var(--orange);
+                    place-content: center;
+                    width: 26px;
+                    height: 26px;
+                    background-color: unset;
+                    transition: 200ms ease-out transform;
+
+                    @keyframes fillOuterSvg {
+                        0% {
+                            stroke-dashoffset: 76;
+                        } 100% {
+                            stroke-dashoffset: 0;
+                        }
+                    }
+
+                    & > svg {
+                        fill: none;
+                        stroke: currentColor;
+                    }
+
+                    & .svg__circle {
+                        stroke-dasharray: 76;
+                        stroke-dashoffset: 76;
+                    }
+                }
+
+                & > .swiper-pagination-bullet[aria-current] {
+                    transform: scale(1.3);
+
+                    & .svg__circle {
+                        animation: fillOuterSvg 5s linear backwards 1s;
+                    }
+
+                    & .svg__circle-inner {
+                        fill: currentColor;
+                    }
+                }
+            }
             
             & .headliner-slider {
-                height: 100%;
+                align-items: stretch;
                 
                 &__slide {
+                    height: auto;
                     border-radius: 16px;
                     overflow: hidden;
 

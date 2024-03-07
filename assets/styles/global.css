@@ -34,8 +34,8 @@
           backdrop-filter: blur(6px);
   visibility: hidden;
   opacity: 0;
-  -webkit-transition: 600ms linear opacity, 600ms linear visibility;
-  transition: 600ms linear opacity, 600ms linear visibility;
+  -webkit-transition: 300ms linear opacity, 300ms linear visibility;
+  transition: 300ms linear opacity, 300ms linear visibility;
 }
 .focus-block.focused {
   visibility: visible;

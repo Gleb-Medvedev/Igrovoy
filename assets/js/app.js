@@ -4,17 +4,31 @@
 const mainBannerSlider = new Swiper('.swiper', {
     direction: 'horizontal',
     loop: true,
-    autoplay: true,
+    autoplay: {
+      delay: 5000,
+    },
     slidesPerView: 1,
-    spaceBetween: 20,
-    allowTouchMove: false,
-    speed: 1700,
+    // allowTouchMove: false,
+    speed: 1000,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
 
     navigation: {
         nextEl: '.main-banner__headliner-next-btn',
         prevEl: '.main-banner__headliner-prev-btn',
       },
+
+      pagination: {
+        el: '.headliner-pagination',
+        renderBullet: function(index, className) {
+            return '<span class="' + className + ' headliner-pagination__bullet"><svg width="26" height="26" viewBox="0 0 28 28"><circle class="svg__circle" cx="14" cy="14" r="12" stroke-width="2"></circle><circle class="svg__circle-inner" cx="14" cy="14" r="6" stroke-width="2"></circle></svg></span>'
+        },
+    },
 });
+
+{/* <svg width="26" height="26" viewBox="0 0 28 28"><circle class="svg__circle" cx="14" cy="14" r="12" stroke-width="2"></circle><circle class="svg__circle-inner" cx="14" cy="14" r="6" stroke-width="3"></circle></svg> */}
 
 //reseive data from local JSON Server.
 
@@ -27,7 +41,7 @@ async function getDataBase(url, reseivedData) {
   try {
     reseivedData = await fetch(url);
   } catch (err) {
-    alert(`Ошибка базы данных: ${err}\nДля запуска локального сервера используйте "npm run server"`);
+    // alert(`Ошибка базы данных: ${err}\nДля запуска локального сервера используйте "npm run server"`);
     return;
   }
 
@@ -47,6 +61,10 @@ function searchBarToggle(searchBtn) {
   searchBtn.addEventListener('click', () => {
     document.querySelector('.search-popup').classList.toggle('in-view');
     document.querySelector('body').style.overflow = "hidden";
+
+    if (!dataBase) {
+      searchInput.placeholder = 'Поиск недоступен! Отсутствуют данные из базы данных! "npm run server" для запуска локального сервера'
+    }
   })
 }
 
@@ -104,43 +122,25 @@ const focusBlock = document.querySelector('.focus-block');
 
 function toggleHeaderContacts (list, listItems) {
   list.classList.toggle('in-view');
-  focusBlock.classList.add('focused');
 
   if (list.classList.contains('in-view')) {
+    focusBlock.classList.add('focused');
     listItems.forEach((el, index) => {
       setTimeout(function () {
         el.classList.add('visible');
-      }, index * 150)
+      }, index * 65)
     })
+    
   } else {
     focusBlock.classList.remove('focused');
     listItems.forEach((el, index) => {
       setTimeout(function () {
         el.classList.remove('visible');
-      }, ((listItems.length - 1) - index) * 150)
+      },
+      // ((listItems.length - 1) - index) * 65)
+      index * 65)
     })
-
-
-
   }
-  //проверка наличия класса "in-view" для Header__contacts
-  //Нужно для удаления класса "visible" для элементов списка при очень быстром клике кнопки отображения всего списка
-  setTimeout(function () {
-    if (!list.classList.contains('in-view') && listItems[listItems.length - 1].classList.contains('visible')) {
-      setTimeout(function () {
-        listItems.forEach(el => {
-          el.classList.remove('visible');
-        })
-      }, listItems.length * 150)
-    } else if (list.classList.contains('in-view') && !listItems[listItems.length - 1].classList.contains('visible')) {
-      setTimeout(function () {
-        listItems.forEach(el => {
-          el.classList.add('visible');
-        })
-      }, listItems.length * 150)
-    }
-  }, listItems.length * 150)
-  //проверка наличия класса для Header__contacts -- ENDS
 }
 
 document.querySelector('.contacts-btn').addEventListener('click', () => {
