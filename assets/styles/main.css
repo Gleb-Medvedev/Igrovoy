@@ -91,17 +91,16 @@ body {
   color: var(--orange);
   outline: 2px solid currentColor;
 }
-.header .bottom-bar .contacts.in-view::before {
-  visibility: visible;
-  opacity: 1;
-}
 .header .bottom-bar .contacts.in-view .contacts-container > .contacts-movable-wrapper {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-.header .bottom-bar .contacts.in-view .contacts__list {
+.header .bottom-bar .contacts.in-view .contacts__list, .header .bottom-bar .contacts.in-view .contacts__list-item {
   visibility: visible;
+}
+.header .bottom-bar .contacts.in-view .contacts__list-item {
+  opacity: 1;
 }
 @-webkit-keyframes contactsAnimation {
   0%, 25% {
@@ -131,10 +130,6 @@ body {
             transform: rotate(-30deg);
   }
 }
-.header .bottom-bar .contacts:not(.in-view)::before {
-  -webkit-transition-delay: 350ms;
-          transition-delay: 350ms;
-}
 .header .bottom-bar .contacts:not(.in-view) .contacts-container {
   -webkit-animation: contactsAnimation infinite ease-out 7s 1s;
           animation: contactsAnimation infinite ease-out 7s 1s;
@@ -161,8 +156,8 @@ body {
   max-width: 32px;
   max-height: 64px;
   height: 200%;
-  -webkit-transition: 250ms ease-out transform;
-  transition: 250ms ease-out transform;
+  -webkit-transition: 300ms ease-out transform;
+  transition: 300ms ease-out transform;
 }
 .header .bottom-bar .contacts-img-wrapper {
   height: 50%;
@@ -177,8 +172,8 @@ body {
   top: calc(100% + 2px);
   left: 0;
   padding: 20px 0;
-  -webkit-transition: 250ms ease-out all;
-  transition: 250ms ease-out all;
+  -webkit-transition: 300ms ease-out all;
+  transition: 300ms ease-out all;
   visibility: hidden;
 }
 .header .bottom-bar .contacts__list-item {
@@ -188,14 +183,10 @@ body {
   text-align: center;
   border-radius: 16px;
   overflow: hidden;
-  -webkit-transition: 250ms ease-out all;
-  transition: 250ms ease-out all;
+  -webkit-transition: 300ms ease-out all;
+  transition: 300ms ease-out all;
   visibility: hidden;
   opacity: 0;
-}
-.header .bottom-bar .contacts__list-item.visible {
-  visibility: visible;
-  opacity: 1;
 }
 .header .bottom-bar .contacts__list-item:not(:last-child) {
   margin-bottom: 20px;
@@ -366,7 +357,6 @@ body {
 }
 .main-banner__headliner .headliner-pagination > .swiper-pagination-bullet {
   color: var(--orange);
-  place-content: center;
   width: 26px;
   height: 26px;
   background-color: unset;

@@ -106,18 +106,19 @@ body {
             outline: 2px solid currentColor;
 
             &.in-view {
-                &::before {
-                    visibility: visible;
-                    opacity: 1;
-                }
                 & .contacts-container {
                     & > .contacts-movable-wrapper {
                         transform: translateY(-50%);
                     }
                 }
 
-                & .contacts__list {
+                & .contacts__list,
+                & .contacts__list-item {
                     visibility: visible;
+                }
+
+                & .contacts__list-item {
+                    opacity: 1;
                 }
             }
 
@@ -132,10 +133,6 @@ body {
             }
 
             &:not(.in-view) {
-                &::before {
-                    transition-delay: 350ms;
-                }
-
                 & .contacts-container {
                     animation: contactsAnimation infinite ease-out 7s 1s;
                 }
@@ -166,7 +163,7 @@ body {
                 max-width: 32px;
                 max-height: 64px;
                 height: 200%;
-                transition: 250ms ease-out transform;
+                transition: 300ms ease-out transform;
             }
 
             &-img-wrapper {
@@ -184,7 +181,7 @@ body {
                 top: calc(100% + 2px);
                 left: 0;
                 padding: 20px 0;
-                transition: 250ms ease-out all;
+                transition: 300ms ease-out all;
                 visibility: hidden;
 
                 &-item {
@@ -194,14 +191,9 @@ body {
                     text-align: center;
                     border-radius: 16px;
                     overflow: hidden;
-                    transition: 250ms ease-out all;
+                    transition: 300ms ease-out all;
                     visibility: hidden;
                     opacity: 0;
-
-                    &.visible {
-                        visibility: visible;
-                        opacity: 1;
-                    }
 
                     &:not(:last-child) {
                         margin-bottom: 20px;
@@ -401,7 +393,6 @@ body {
 
                 & > .swiper-pagination-bullet {
                     color: var(--orange);
-                    place-content: center;
                     width: 26px;
                     height: 26px;
                     background-color: unset;

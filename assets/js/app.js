@@ -8,7 +8,6 @@ const mainBannerSlider = new Swiper('.swiper', {
       delay: 5000,
     },
     slidesPerView: 1,
-    // allowTouchMove: false,
     speed: 1000,
     effect: 'fade',
     fadeEffect: {
@@ -124,21 +123,12 @@ function toggleHeaderContacts (list, listItems) {
   list.classList.toggle('in-view');
 
   if (list.classList.contains('in-view')) {
-    focusBlock.classList.add('focused');
     listItems.forEach((el, index) => {
-      setTimeout(function () {
-        el.classList.add('visible');
-      }, index * 65)
+      el.style.transitionDelay = `${(index + 1) * 75}ms`
     })
-    
   } else {
-    focusBlock.classList.remove('focused');
     listItems.forEach((el, index) => {
-      setTimeout(function () {
-        el.classList.remove('visible');
-      },
-      // ((listItems.length - 1) - index) * 65)
-      index * 65)
+      el.style.transitionDelay = `${(listItems.length - index) * 75}ms`
     })
   }
 }
