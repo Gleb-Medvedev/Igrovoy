@@ -3,4 +3,17 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);
   }
+}
+@media screen and (max-width: 580px) {
+  .main-banner__content {
+    grid-template-columns: 1fr;
+  }
+  .main-banner .grid-gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: unset;
+  }
+  .main-banner .grid-gallery__card-wrapper:not(:last-child) {
+    margin-bottom: 3%;
+  }
 }/*# sourceMappingURL=responsive.css.map */

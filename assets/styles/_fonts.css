@@ -4,12 +4,11 @@
     src: url("../fonts/ReformaGroteskMediumC.woff2") format("woff2"),
     url("../fonts/ReformaGroteskMediumC.woff") format("woff"),
     url("../fonts/ReformaGroteskMediumC.ttf") format("truetype");
-};
-
+}
 @font-face {
     font-family: "Manrope";
     src: url("../fonts/Manrope-Medium.eot");
     src: url("../fonts/Manrope-Medium.woff2") format("woff2"),
     url("../fonts/Manrope-Medium.woff") format("woff"),
     url("../fonts/Manrope-Medium.ttf") format("truetype");
-};
+}

@@ -1,12 +1,27 @@
 :root {
     /* colors */
-    --red: #9F2B68;
-    --green: #00FF00;
+    --red: #F80000;
+    --light-green: #00FF00;
+    --dark-green: #008000;
     --orange: #fb731d;
+    --orange_gradient: linear-gradient(90deg, #fad961 0, #f76b1c 62.24%, #f76b1c 100%);
     --indigo: #00416A;
     --dark: #1D1E33;
     --white: #fff;
+    --black: #000;
+    --nintendo_orangered: #fe0016;
+    --xbox_green: #0e7a0d;
+    --playstation_purple: #665cbe;
 
     /* letter-spacing */
-    --reforma_46: .46rem;
+    --ls-reforma_29: .29rem;
+    --ls-reforma_46: .46rem;
+    --ls-reforma_85: .85rem;
+
+    /* font-shadow */
+
+    --ts_1-1-3_black: 1px 1px 3px rgba(0, 0, 0, 0.575);
+    --ts_1-3-2_black: 1px 3px 2px rgba(0, 0, 0, 0.575);
+    --ts_1-1-3_current: 1px 1px 3px currentColor;
+    --ts_1-3-2_current: 1px 3px 2px currentColor;
 }
