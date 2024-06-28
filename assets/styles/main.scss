@@ -384,7 +384,7 @@ body {
 }
 
 .main {
-    padding: 40px 0;
+    padding: 40px 0 200px;
     margin-top: 148px;
 
     &-banner {
@@ -598,7 +598,7 @@ body {
         }
     }
 
-    & .advantages {
+    .advantages {
         &__list {
             padding-top: 40px;
             align-items: stretch;
@@ -617,7 +617,7 @@ body {
             color: var(--white);
             border-color: currentColor;
             border-style: solid;
-            border-width: 2px;
+            border-width: 1px;
 
             &_pseudo {
                 position: absolute;
@@ -626,7 +626,7 @@ body {
                 transform: translate(-50%, 50%);
                 width: 0;
                 height: 2px;
-                background-color: var(--dark-green);
+                background-color: var(--orange);
 
                 @keyframes changePseudoWidth {
                     0%, 100% {
@@ -687,11 +687,89 @@ body {
         &-body {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
+            gap: 1.5%;
         }
 
         &-product {
             color: var(--white);
+        }
+    }
+
+    .join-us {
+        &__card {
+            border: 1px solid;
+            border-radius: 16px;
+            overflow: hidden;
+
+            &.social {
+                border-color: var(--vk_blue);
+                position: relative;
+                display: grid;
+                grid-template: repeat(2, 1fr) / 60% 40%;
+
+                & > .social-link {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+
+                & .join-us__card-body {
+                    grid-area: 1 / 1 / 3 / 2;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+            }
+
+            &-img {
+                grid-area: 1 / 2 / 3 / 3;
+                position: relative;
+                z-index: -1;
+                overflow: hidden;
+
+                & > img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                &::before {
+                    position: absolute;
+                    content: '';
+                    width: 30%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    background-color: var(--dark);
+                    border-radius: 0 0 99% 0;
+                    z-index: 1;
+                }
+            }
+
+            &-body {
+                overflow: hidden;
+                padding: 40px;
+            }
+
+            &-title {
+                color: var(--vk_blue);
+                font-size: 40px;
+                line-height: 150%;
+                letter-spacing: var(--ls-reforma_46);
+                text-transform: uppercase;
+                font-weight: 600;
+                text-shadow: var(--ts_1-3-2_black);
+                margin-bottom: 30px;
+            }
+
+            &-desc {
+                color: var(--white);
+                font-size: 16px;
+                letter-spacing: var(--ls-reforma_29);
+                line-height: 155%;
+            }
         }
     }
 }

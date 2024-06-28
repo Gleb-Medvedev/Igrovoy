@@ -68,8 +68,8 @@ const advantagesSlider = new Swiper('.advantages-slider', {
         slide.querySelector('.advantages__card_pseudo').style.animation =
         `changePseudoWidth ${this.params.autoplay.delay}ms ease-out ${this.params.speed + (index * 400)}ms 1 forwards`;
 
-        slide.querySelector('.advantages__card').style.animation = 
-        `activeSlideBorderColor ${this.params.autoplay.delay}ms ease-in-out ${this.params.speed + (index * 400)}ms 1 forwards`;
+        // slide.querySelector('.advantages__card').style.animation = 
+        // `activeSlideBorderColor ${this.params.autoplay.delay}ms ease-in-out ${this.params.speed + (index * 400)}ms 1 forwards`;
 
         slide.querySelector('.advantages__card-description').style.animation = 
         `descriptionAppearance ${this.params.autoplay.delay}ms ease-out ${this.params.speed + (index * 400)}ms 1 forwards`;
@@ -77,6 +77,17 @@ const advantagesSlider = new Swiper('.advantages-slider', {
     },
   },
 })
+
+const joinSectionSlider = new Swiper('.join-us-slider', {
+  direction: 'horizontal',
+    loop: true,
+    grabCursor: false,
+    // autoplay: {
+    //   delay: 8000,
+    // },
+    slidesPerView: 1,
+    speed: 1000,
+});
 
 //reseive data from local JSON Server.
 
